@@ -39,7 +39,7 @@ A solução foi estruturada utilizando a **Medallion Architecture** (Arquitetura
 
 ## Decisões Técnicas e Diferenciais
 
-1. **Idempotência**: O pipeline foi construído com o modo `overwrite`, permitindo que o processo seja executado múltiplas vezes sem gerar duplicidade de dados.
+1. **Consistência de resultado**: O pipeline foi construído com o modo `overwrite`, permitindo que o processo seja executado múltiplas vezes sem gerar duplicidade de dados.
 2. **Governança de Dados**: A inclusão de uma célula de **Data Quality** garante que falhas na API ou dados corrompidos não cheguem à camada Gold, protegendo a análise do usuário final.
 3. **Escalabilidade**: Ao utilizar PySpark e Delta Lake, a solução está preparada para lidar com grandes volumes de dados (Big Data), indo além da simples manipulação de arquivos locais.
 4. **Resiliência**: O uso de blocos de repetição (`for`) nas camadas permite que o pipeline seja facilmente expandido para outras tabelas do IBGE com poucas alterações de código.
@@ -48,22 +48,57 @@ A solução foi estruturada utilizando a **Medallion Architecture** (Arquitetura
 
 ## Evidência da estrutura construida
 1. **Estrutura de pastas**
-2. ![portal-azure.png](jb-image:img_1769915205778_f76ff82132d65)
-3. ![grupo-de-recurso.png](jb-image:img_1769915236300_efd27e687f7e9)
-4. ![azure-databricks.png](jb-image:img_1769915259843_168791c36a21e)
-5. ![containners.png](jb-image:img_1769915274815_83ccf4ca30b758)
-1. **Bronze**: ![bronze_populacao.png](jb-image:img_1769914932113_cca9648a2d6eb8)
-   ![bronze_populacao_raw.png](jb-image:img_1769914951048_7276df81bb935)
-   ![bronze_populacao_raw_deltalog.png](jb-image:img_1769914967052_a680bbf8b74bf)
-3. **Silver**: ![populacao-silver.png](jb-image:img_1769914998120_1eddf144581e68)
-   ![populacao-silver_estrutura.png](jb-image:img_1769915017537_e461532808c3b8)
-   ![populacao-silver_deltalog.png](jb-image:img_1769915028403_145ee6e3c753c)
-5. **Gold**: ![gold_indicadores.png](jb-image:img_1769915070091_fecabea3e9e69)
-   ![gold_ranking_populacao_uf.png](jb-image:img_1769915103514_570289290e2d08)
-   ![gold_populacao_vs_media_regional.png](jb-image:img_1769915130274_bb9263b534de3)
-   ![gold_representatividade_brasil.png](jb-image:img_1769915153090_c45ccb3e187da8)
+
+   **Portal azure**:
+2.![Portal Azure ](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/portal%20azure.png)
+
+**Grupo de recurso**:
+3. ![Grupo de recurso](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/grupo%20de%20recurso.png)
+
+**Azure databricks**:
+4. ![Azure databricks](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/azure%20databricks.png)
+
+ **Containners**:
+6. ![Containners](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/containners.png)
+
+1. **Camada Bronze**:
+
+**Bronze população**:
+2. ![Bronze populacao](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/bronze_populacao.png)
+
+ **Bronze população raw**:
+3. ![Bronze populacao_raw](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/bronze_populacao_raw.png)
+
+   **Bronze população delta**:
+4. ![Bronze populacao_raw](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/bronze_populacao_raw_deltalog.png)
    
----
+2. **Camada Silver**:
+
+   **População silver**:
+1.  ![Populacao_silver](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/populacao%20silver.png)
+
+ **População silver estrutura de pasta**:
+2.  ![Populacao_silver](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/populacao%20silver_estrutura.png)
+
+   **População delta**:
+3.  ![Populacao_silver_deltalog](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/populacao%20silver_deltalog.png)
+   
+4. **Camada Gold**:
+
+**Indicadores camada gold**:
+1. ![Populacao_silver_deltalog](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/gold_indicadores.png)
+
+**ranking população uf**:
+2. ![gold_ranking_populacao_uf](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/gold_ranking_populacao_uf.png)
+
+**População vs media regional**:
+3. ![gold_ranking_populacao_uf](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/gold_populacao_vs_media_regional.png)
+
+**Representatividade Brasil**:
+4. ![gold_ranking_populacao_uf](https://github.com/tiago-arauj/dados-ibge/blob/main/assets/gold_representatividade_brasil.png)
+
+   
+
 
 ## Como Executar
 
