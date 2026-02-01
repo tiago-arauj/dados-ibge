@@ -8,12 +8,12 @@ A solução foi estruturada utilizando a **Medallion Architecture** (Arquitetura
 
 
 
-### 🥉 Camada Bronze (Raw)
+###  Camada Bronze (Raw)
 * **Objetivo**: Ingestão do dado bruto direto da API.
 * **Formato**: Delta Lake.
 * **Decisão**: Armazenar o dado exatamente como ele vem da origem para garantir que possamos reprocessar o pipeline sem depender novamente da API externa.
 
-### 🥈 Camada Silver (Tratada)
+###  Camada Silver (Tratada)
 * **Objetivo**: Limpeza, padronização e tipagem.
 * **Ações**: 
   * Remoção de cabeçalhos descritivos da API.
@@ -21,7 +21,7 @@ A solução foi estruturada utilizando a **Medallion Architecture** (Arquitetura
   * Conversão de tipos (ex: Populacao de `string` para `double`).
 * **Qualidade**: Implementação de **Data Quality Gates** para validar nulidade e valores inconsistentes (negativos).
 
-### 🥇 Camada Gold (Consumo)
+###  Camada Gold (Consumo)
 * **Objetivo**: Tabela analítica pronta para negócios.
 * **Agregação**: Criação de um ranking das 10 Unidades da Federação mais populosas por ano, utilizando Window Functions.
 
